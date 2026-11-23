@@ -1,0 +1,242 @@
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   font-family: "Inter";
+   line-height: 1.5;
+   color: oklch(0.914 0.013 41);
+}
+
+body {
+   display: flex;
+   min-height: 100vh;
+   background-color: oklch(0.252 0.039 271);
+}
+
+h1, h2, h3 {
+   font-family: "JetBrains Mono";
+}
+
+h2 {
+   margin-bottom: 1rem;
+}
+
+ul {
+   margin-left: 2rem;
+}
+ul li {
+   position: relative;
+   list-style-type: none;
+   --rotateDeg: 0deg;
+   --brightness: 100%;
+}
+li::before {
+  content: "";
+  position: absolute;
+  left: -2em;
+  top: 0.25em;
+  width: 1em;
+  height: 1em;
+  background-image: url('squiggle.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  transform: rotate(var(--rotateDeg));
+  filter: brightness(var(--brightness));
+  animation: rotate linear 15s infinite;
+}
+@keyframes rotate {
+   0% {
+      transform: rotate(var(--rotateDeg));
+   }
+   100% {
+      transform: rotate(calc(var(--rotateDeg) + 360deg));
+   }
+}
+
+@counter-style no-dot {
+  system: extends decimal;
+  suffix: "     ";
+}
+ol {
+  list-style: no-dot;
+}   
+ol li::marker {
+   color: oklch(0.914 0.013 41 / 0.44);
+}
+ol li.active::marker {
+   color: oklch(0.914 0.013 41);
+}
+
+.page {
+   max-width: 1000px;
+   min-height: 100vh;
+   flex: 1;
+   flex-basis: 100%;
+   margin: 0 auto;
+}
+
+.outer-edge {
+   flex: 2;
+   min-width: 10px;
+   background-color: oklch(0.23 0.032 270);
+   z-index: 2;
+}
+.inner-edge {
+   flex: 1;
+   min-width: 5px;
+   background-color: oklch(0.252 0.039 271);
+   z-index: 2;
+}
+
+.content {
+   border-radius: 20px;
+   border: 2px solid oklch(0.252 0.039 271);
+   padding: 0 clamp(16px, 3vw, 32px);
+   background-color: oklch(0.264 0.039 271);
+}
+
+.new {
+   margin: 32px 0;
+   border-bottom: 2px solid oklch(0.374 0.056 271);
+   padding-bottom: 32px;
+}
+
+.string {
+   color: oklch(0.821 0.076 259);
+}
+.comment {
+   color: oklch(0.625 0.202 0);
+   font-style: italic;
+}
+.property-value {
+   color: oklch(0.778 0.134 145);
+}
+.operator {
+   color: oklch(0.82 0.148 80);  
+}
+.attribute-name {
+   color: oklch(0.703 0.123 259);
+}
+
+.quiet {
+   color: oklch(0.914 0.013 41 / 0.5);
+}
+.underline-quiet {
+   position: relative;
+   width: fit-content;
+}
+.underline-quiet::before {
+   content: "";
+   position: absolute;
+   bottom: 0;
+   left: 0;
+   width: 100%;
+   height: 2px;
+   background-color: oklch(0.914 0.013 41 / 0.25);
+   transform-origin: top left;
+   transform: scaleX(0%);
+   animation: slide-in-out 4000ms infinite;
+}
+@keyframes slide-in-out {
+   0% {
+      transform-origin: top left;
+      transform: scaleX(0%);
+   }
+   12.5% {
+      transform-origin: top left;
+      transform: scaleX(100%);
+   }
+   13% {
+      transform-origin: top right;
+      transform: scaleX(100%);
+   } 
+   25% {
+      transform-origin: top right;
+      transform: scaleX(0%);
+   } 
+}
+
+.code {
+   border-radius: 16px;
+   padding: 24px;
+   padding-left: 66px;
+   background-color: oklch(0.333 0.049 271 / 0.25);
+}
+.code p,
+.code span {
+   font-family: "JetBrains Mono";
+}
+
+.number {
+   color: oklch(0.839 0.099 70);
+}
+.comment {
+   color: oklch(0.625 0.202 0);
+   font-style: italic;
+}
+.boolean {
+   color: oklch(0.727 0.168 300);
+}
+
+.tag {
+   color: oklch(0.728 0.123 41);
+}
+.brackets {
+   color: oklch(0.629 0.113 41);
+}
+
+.indent-1 {
+   text-indent: 1rem;
+}
+.indent-2 {
+   text-indent: 2rem;
+}
+.media {
+   color: oklch(0.625 0.202 0);
+}
+.bracket.level-1 {
+   color: oklch(0.759 0.143 70);
+}
+.bracket.level-2 {
+   color: oklch(0.715 0.192 310);
+}
+.bracket.level-3 {
+   color: oklch(0.643 0.182 250);
+}
+.css-elm-selector {
+   color: oklch(0.728 0.123 41);
+}
+.css-class-selector {
+   color: oklch(0.839 0.099 70);
+}
+.css-id-selector {
+   color: oklch(0.625 0.202 0);
+}
+.pseudo-class {
+   color: oklch(0.727 0.167 300);
+}
+.css-property-name {
+   color: oklch(0.703 0.123 259);
+}
+
+.variable-declaration {
+   color: oklch(0.728 0.123 41);
+}
+.variable {
+   color: oklch(0.816 0.062 41);
+}
+.function {
+   color: oklch(0.703 0.123 259);
+}
+.parameter {
+   color: oklch(0.778 0.134 145);
+}
+.unused-var {
+   color: oklch(0.816 0.062 41 / 0.6);
+}
+
+footer {
+   padding: 32px;
+   background-color: oklch(0.252 0.039 271);
+   z-index: 1;
+}
